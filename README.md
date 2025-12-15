@@ -140,8 +140,6 @@ const [articles, setArticles] = useState(() => {
 });
 ```
 
-**Résultat** : ![Blog App](./screenshots/blog.png)
-
 ---
 
 ## 🧪 Comparaison technique
@@ -586,11 +584,10 @@ Les contributions sont encouragées ! Voici comment participer :
 
 **Imen BEN OTHMEN BANANI**
 
-- 🎓 Étudiante en 4ème année Data Science
+- 🎓 Étudiante en 5ème année Data Science
 - 💻 Spécialisation : MERN Stack Development
-- 📧 Email : [votre-email@exemple.com]
-- 🔗 LinkedIn : [votre-profil]
-
+- 📧 Email : imenbenothmenbanani@gmail.com
+- 🔗 LinkedIn : imenbenothmenbanani
 ---
 
 ## 📝 Licence
