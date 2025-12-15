@@ -1,507 +1,610 @@
-# 🎬 MovieDB Explorer - Projet Comparatif
+# ⚛️ React Hooks Mastery Project
 
-Une application de découverte de films utilisant l'API TMDb, implémentée avec **trois solutions de gestion d'état différentes** : Context API, Redux Toolkit, et Zustand.
+> **"Three hooks, infinite possibilities. Master state management from basics to advanced."**
+
+[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react&logoColor=white)](https://reactjs.org/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+Ce projet propose une exploration complète des trois hooks React fondamentaux à travers des applications pratiques et interactives. Chaque application démontre une approche différente de la gestion d'état avec persistance locale.
+
+---
+
+## 🎯 Philosophie du Projet
+
+Dans React moderne, trois hooks dominent la gestion d'état :
+
+- **useState** – La base : état local simple et direct
+- **useEffect** – Le pont : synchronisation avec le monde extérieur
+- **useReducer** – L'architecture : logique complexe et prévisible
+
+Ce projet vous permet de les maîtriser tous les trois dans des contextes réels.
+
+---
 
 ## 📋 Table des Matières
 
-- [Aperçu](#aperçu)
-- [Fonctionnalités](#fonctionnalités)
-- [Technologies Utilisées](#technologies-utilisées)
-- [Installation](#installation)
-- [Structure du Projet](#structure-du-projet)
-- [Comparaison des Solutions](#comparaison-des-solutions)
-- [Captures d'Écran](#captures-décran)
-- [API TMDb](#api-tmdb)
+1. [Vue d'ensemble](#-vue-densemble)
+2. [Applications incluses](#-applications-incluses)
+3. [Comparaison technique](#-comparaison-technique)
+4. [Installation rapide](#-installation-rapide)
+5. [Structure et architecture](#-structure-et-architecture)
+6. [Guide d'utilisation](#-guide-dutilisation)
+7. [Concepts React abordés](#-concepts-react-abordés)
+8. [Quand utiliser quel hook ?](#-quand-utiliser-quel-hook-)
+9. [Ressources et documentation](#-ressources-et-documentation)
 
 ---
 
-## 🎯 Aperçu
+## 🌟 Vue d'ensemble
 
-Ce projet est une application web moderne permettant de découvrir des films populaires, de les rechercher par titre, de les filtrer par genre, et de gérer une liste de favoris. L'objectif principal est de **comparer trois approches différentes de gestion d'état** dans React.
+### Objectifs d'apprentissage
 
-### Versions Implémentées
+Ce projet vous permet de maîtriser :
 
-1. **Context API** - Solution native de React
-2. **Redux Toolkit** - Bibliothèque de gestion d'état robuste
-3. **Zustand** - Solution légère et moderne
+✅ **Gestion d'état** : Du simple compteur aux structures complexes  
+✅ **Effets de bord** : API, timers, localStorage, événements  
+✅ **Reducers** : Architecture flux et logique métier organisée  
+✅ **Immutabilité** : Mises à jour d'état sécurisées et performantes  
+✅ **Persistance** : Sauvegarde automatique des données  
+✅ **Inputs contrôlés** : Formulaires React professionnels
 
----
+### Technologies utilisées
 
-## ✨ Fonctionnalités
-
-### Fonctionnalités Principales
-
-- ✅ **Chargement des films populaires** depuis l'API TMDb
-- ✅ **Système de favoris** avec icône étoile interactive
-- ✅ **Filtrage par genre** avec sélecteur dropdown
-- ✅ **Recherche par titre** avec debouncing (500ms)
-- ✅ **Affichage des favoris** dans une sidebar dédiée
-- ✅ **Interface responsive** adaptée à tous les écrans
-- ✅ **Design moderne** avec glassmorphism et animations
-
-### Fonctionnalités Techniques
-
-- 🔄 Gestion d'état synchronisée entre les trois versions
-- 🎨 CSS commun partagé entre toutes les versions
-- ⚡ Optimisation des performances (lazy loading des images)
-- 🔍 Recherche avec debouncing pour réduire les appels API
-- 📱 Design responsive (mobile, tablette, desktop)
-- 🎭 Animations et transitions fluides
+| Technologie | Version | Utilisation |
+|------------|---------|-------------|
+| React | 18.x | UI Library |
+| JavaScript | ES6+ | Langage principal |
+| localStorage | Native | Persistance |
+| CSS3 | - | Styling |
+| Vite/CRA | Latest | Build tool |
 
 ---
 
-## 🛠️ Technologies Utilisées
+## 🚀 Applications incluses
 
-### Core
+### 1️⃣ Todo App avec useReducer
 
-- **React 19.2.0** - Bibliothèque UI
-- **Vite 7.2.2** - Build tool et dev server
-- **JavaScript (ES6+)** - Langage de programmation
+**Concept** : Gestionnaire de tâches avec architecture reducer avancée
 
-### Gestion d'État
+**Fonctionnalités clés :**
+- ✏️ CRUD complet sur les tâches
+- 🔄 Système de filtres (toutes/actives/complétées)
+- 💾 Sauvegarde automatique localStorage
+- 🎯 Actions typées et prévisibles
+- 📊 Statistiques en temps réel
 
-- **Context API** - Solution native React
-- **Redux Toolkit 2.11.0** - Gestion d'état avec Redux
-- **Zustand 5.0.8** - Gestion d'état légère
+**Hook principal** : `useReducer` pour une logique d'état structurée
 
-### API
+```javascript
+// Architecture reducer
+dispatch({ type: 'ADD_TODO', payload: 'Nouvelle tâche' });
+dispatch({ type: 'TOGGLE_TODO', payload: id });
+dispatch({ type: 'DELETE_TODO', payload: id });
+```
 
-- **TMDb API** - The Movie Database API
-- **Fetch API** - Pour les requêtes HTTP
-
-### Styling
-
-- **CSS3** - Avec variables CSS, Grid, Flexbox
-- **Glassmorphism** - Effets de verre moderne
-- **Animations CSS** - Transitions et keyframes
+**Résultat** : ![Todo App](./screenshots/todo.png)
 
 ---
 
-## 📦 Installation
+### 2️⃣ Shopping List + Pomodoro Timer
+
+**Concept** : Double fonctionnalité avec gestion de timers
+
+**Fonctionnalités clés :**
+- 🛒 Gestion de liste de courses
+- ⏱️ Timer Pomodoro (25 min focus)
+- 🔔 Notifications de fin de session
+- 🧹 Nettoyage automatique des intervalles
+- 💾 Persistance multi-états
+
+**Hook principal** : `useEffect` pour la gestion de timers et cleanup
+
+```javascript
+// Gestion avancée des intervalles
+useEffect(() => {
+  let interval = null;
+  if (isActive) {
+    interval = setInterval(() => {
+      // Logique timer
+    }, 1000);
+  }
+  return () => clearInterval(interval); // Cleanup
+}, [isActive, minutes, seconds]);
+```
+
+**Résultat** : ![Shopping List](./screenshots/shopping.png)
+
+---
+
+### 3️⃣ Interactive Blog
+
+**Concept** : Plateforme de blogging complète
+
+**Fonctionnalités clés :**
+- 📝 Création et gestion d'articles
+- 👍👎 Système de likes/dislikes
+- 🔍 Recherche en temps réel
+- 🔀 Tri multi-critères (date, likes, titre)
+- 👤 Filtrage par auteur
+- 🗑️ Suppression d'articles
+- 💾 Persistance complète
+
+**Hook principal** : `useState` avec lazy initialization
+
+```javascript
+// Lazy initialization pour performance
+const [articles, setArticles] = useState(() => {
+  const saved = localStorage.getItem('blog-articles');
+  return saved ? JSON.parse(saved) : [];
+});
+```
+
+**Résultat** : ![Blog App](./screenshots/blog.png)
+
+---
+
+## 🧪 Comparaison technique
+
+### useState vs useReducer vs useEffect
+
+| Critère | useState | useReducer | useEffect |
+|---------|----------|------------|-----------|
+| **Complexité état** | Simple | Complexe | N/A |
+| **Logique métier** | Inline | Centralisée | Side effects |
+| **Testabilité** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Lignes de code** | Minimal | Moyen | Variable |
+| **Cas d'usage** | Compteurs, toggles | Todo, formulaires | API, timers |
+| **Performance** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+
+### Détails par hook
+
+#### 🔵 useState
+
+**Quand l'utiliser :**
+- État local simple (string, number, boolean)
+- Pas de logique métier complexe
+- Peu de transformations d'état
+- Prototypage rapide
+
+**Forces :**
+- API ultra simple
+- Parfait pour débuter
+- Minimal en code
+
+**Limites :**
+- Difficile à tester
+- Logique dispersée
+- Moins adapté aux gros états
+
+---
+
+#### 🟢 useReducer
+
+**Quand l'utiliser :**
+- État avec plusieurs sous-propriétés
+- Logique métier importante
+- Actions multiples sur l'état
+- État partagé entre composants
+
+**Forces :**
+- Logique centralisée
+- Facilement testable
+- Actions prévisibles
+- Pattern Redux familier
+
+**Limites :**
+- Plus verbeux
+- Courbe d'apprentissage
+
+---
+
+#### 🟠 useEffect
+
+**Quand l'utiliser :**
+- Appels API
+- Timers/intervalles
+- localStorage sync
+- Abonnements événements
+- Modifications DOM
+
+**Forces :**
+- Synchronisation externe
+- Cleanup automatique
+- Dépendances explicites
+
+**Limites :**
+- Risque de boucles infinies
+- Gestion des dépendances délicate
+
+---
+
+## 💻 Installation rapide
 
 ### Prérequis
 
-- Node.js (v18 ou supérieur)
-- npm ou yarn
-- Clé API TMDb (déjà incluse dans `.env`)
+- Node.js ≥ 14.x
+- npm ≥ 6.x ou yarn ≥ 1.22
 
-### Étapes d'Installation
+### Étapes d'installation
 
 ```bash
 # 1. Cloner le repository
-git clone <repository-url>
-cd react-tp3
+git clone https://github.com/USERNAME/react-hooks-mastery.git
+cd react-hooks-mastery
 
 # 2. Installer les dépendances
 npm install
 
-# 3. Vérifier le fichier .env
-# Le fichier .env contient déjà la clé API TMDb
-# VITE_TMDB_API_KEY=b85b4d20***686***8d03381ooo
+# 3. Lancer en développement
+npm start
 
-# 4. Lancer le serveur de développement
-npm run dev
-
-# 5. Ouvrir dans le navigateur
-# http://localhost:5173
+# 4. Ouvrir le navigateur
+# → http://localhost:3000
 ```
 
-### Scripts Disponibles
+### Scripts disponibles
 
 ```bash
-npm run dev      # Lancer le serveur de développement
-npm run build    # Créer un build de production
-npm run preview  # Prévisualiser le build de production
-npm run lint     # Vérifier le code avec ESLint
+npm start          # Mode développement
+npm run build      # Build production
+npm test           # Lancer les tests
+npm run lint       # Vérifier le code
 ```
 
 ---
 
-## 📁 Structure du Projet
+## 📁 Structure et architecture
 
 ```
-react-tp3/
-├── src/
-│   ├── components-context/       # Composants Context API
-│   │   ├── Header.jsx
-│   │   ├── FilterBar.jsx
-│   │   ├── MovieCard.jsx
-│   │   ├── MovieGrid.jsx
-│   │   └── FavoritesSidebar.jsx
-│   │
-│   ├── components-redux/          # Composants Redux
-│   │   ├── Header.jsx
-│   │   ├── FilterBar.jsx
-│   │   ├── MovieCard.jsx
-│   │   ├── MovieGrid.jsx
-│   │   └── FavoritesSidebar.jsx
-│   │
-│   ├── components-zustand/        # Composants Zustand
-│   │   ├── Header.jsx
-│   │   ├── FilterBar.jsx
-│   │   ├── MovieCard.jsx
-│   │   ├── MovieGrid.jsx
-│   │   └── FavoritesSidebar.jsx
-│   │
-│   ├── context/                   # Context API
-│   │   └── MoviesContext.jsx
-│   │
-│   ├── redux/                     # Redux Toolkit
-│   │   ├── store.js
-│   │   └── moviesSlice.js
-│   │
-│   ├── zustand/                   # Zustand
-│   │   └── useMoviesStore.js
-│   │
-│   ├── utils/                     # Utilitaires
-│   │   └── tmdbApi.js
-│   │
-│   ├── App.jsx                    # Composant principal avec switcher
-│   ├── AppContext.jsx             # App Context API
-│   ├── AppRedux.jsx               # App Redux
-│   ├── AppZustand.jsx             # App Zustand
-│   ├── main.jsx                   # Point d'entrée
-│   └── styles.css                 # CSS commun
+react-hooks-mastery/
 │
-├── .env                           # Variables d'environnement
-├── package.json                   # Dépendances
-├── vite.config.js                 # Configuration Vite
-└── README.md                      # Documentation
+├── 📂 public/
+│   ├── index.html
+│   └── favicon.ico
+│
+├── 📂 src/
+│   │
+│   ├── 📂 components/          # Composants applicatifs
+│   │   ├── TodoApp.jsx         # App avec useReducer
+│   │   ├── ShoppingListApp.jsx # App avec useEffect
+│   │   └── BlogApp.jsx         # App avec useState
+│   │
+│   ├── 📂 reducers/            # Logique reducer
+│   │   └── todoReducer.js      # Reducer de la Todo App
+│   │
+│   ├── 📂 styles/              # Fichiers CSS
+│   │   ├── TodoApp.css
+│   │   ├── ShoppingList.css
+│   │   └── BlogApp.css
+│   │
+│   ├── 📂 utils/               # Fonctions utilitaires
+│   │   └── localStorage.js
+│   │
+│   ├── App.jsx                 # Point d'entrée principal
+│   ├── App.css
+│   └── index.js
+│
+├── 📂 screenshots/             # Captures d'écran
+├── package.json
+├── README.md
+└── .gitignore
+```
+
+### Architecture par application
+
+#### Todo App (Reducer Pattern)
+
+```
+TodoApp
+├── State (via useReducer)
+├── Reducer (logique pure)
+├── Actions (dispatchers)
+└── Components (UI)
+```
+
+#### Shopping List (Effect Pattern)
+
+```
+ShoppingListApp
+├── Multiple useState
+├── useEffect (timer)
+├── Cleanup logic
+└── localStorage sync
+```
+
+#### Blog App (State Pattern)
+
+```
+BlogApp
+├── Lazy initialization
+├── Derived state
+├── Complex updates
+└── localStorage persistence
 ```
 
 ---
 
-## 🔍 Comparaison des Solutions
+## 🎓 Guide d'utilisation
 
-### 1️⃣ Context API
-
-#### ✅ Avantages
-
-- **Natif à React** - Pas de dépendance externe
-- **Simple à comprendre** - Courbe d'apprentissage faible
-- **Léger** - Aucun bundle supplémentaire
-- **Parfait pour les petits projets** - Idéal pour des états simples
-
-#### ❌ Inconvénients
-
-- **Performance** - Re-renders potentiellement excessifs
-- **Boilerplate** - Nécessite Provider et Consumer
-- **Debugging** - Moins d'outils de développement
-- **Scalabilité** - Difficile pour les grandes applications
-
-#### 💻 Exemple de Code
-
-```jsx
-// MoviesContext.jsx
-const MoviesContext = createContext();
-
-export const MoviesProvider = ({ children }) => {
-  const [movies, setMovies] = useState([]);
-  const [favorites, setFavorites] = useState([]);
-  
-  const toggleFavorite = (movieId) => {
-    setFavorites(prev => 
-      prev.includes(movieId) 
-        ? prev.filter(id => id !== movieId)
-        : [...prev, movieId]
-    );
-  };
-  
-  return (
-    <MoviesContext.Provider value={{ movies, favorites, toggleFavorite }}>
-      {children}
-    </MoviesContext.Provider>
-  );
-};
-
-// Utilisation dans un composant
-const { toggleFavorite, favorites } = useMovies();
-```
-
-#### 📊 Métriques
-
-- **Lignes de code** : ~110 lignes (MoviesContext.jsx)
-- **Bundle size** : 0 KB (natif)
-- **Complexité** : ⭐⭐ (2/5)
-- **Performance** : ⭐⭐⭐ (3/5)
-
----
-
-### 2️⃣ Redux Toolkit
-
-#### ✅ Avantages
-
-- **Prévisible** - Flux de données unidirectionnel
-- **DevTools** - Excellents outils de debugging (Redux DevTools)
-- **Middleware** - Support pour async, logging, etc.
-- **Scalable** - Parfait pour les grandes applications
-- **Time-travel debugging** - Historique des actions
-
-#### ❌ Inconvénients
-
-- **Boilerplate** - Plus de code à écrire
-- **Courbe d'apprentissage** - Concepts à maîtriser (actions, reducers, slices)
-- **Bundle size** - Augmente la taille du bundle
-- **Overkill** - Peut être excessif pour les petits projets
-
-#### 💻 Exemple de Code
-
-```jsx
-// moviesSlice.js
-const moviesSlice = createSlice({
-  name: 'movies',
-  initialState: {
-    movies: [],
-    favorites: [],
-  },
-  reducers: {
-    toggleFavorite: (state, action) => {
-      const movieId = action.payload;
-      if (state.favorites.includes(movieId)) {
-        state.favorites = state.favorites.filter(id => id !== movieId);
-      } else {
-        state.favorites.push(movieId);
-      }
-    },
-  },
-});
-
-// Utilisation dans un composant
-const dispatch = useDispatch();
-const favorites = useSelector(selectFavorites);
-dispatch(toggleFavorite(movieId));
-```
-
-#### 📊 Métriques
-
-- **Lignes de code** : ~120 lignes (moviesSlice.js + store.js)
-- **Bundle size** : ~15 KB (gzipped)
-- **Complexité** : ⭐⭐⭐⭐ (4/5)
-- **Performance** : ⭐⭐⭐⭐⭐ (5/5)
-
----
-
-### 3️⃣ Zustand
-
-#### ✅ Avantages
-
-- **Minimaliste** - API très simple
-- **Léger** - Très petit bundle size
-- **Pas de Provider** - Utilisation directe du hook
-- **Performance** - Optimisé par défaut
-- **TypeScript** - Excellent support TypeScript
-- **Flexible** - Peut utiliser des middlewares
-
-#### ❌ Inconvénients
-
-- **Moins mature** - Communauté plus petite que Redux
-- **DevTools** - Outils de debugging moins avancés
-- **Documentation** - Moins de ressources disponibles
-
-#### 💻 Exemple de Code
-
-```jsx
-// useMoviesStore.js
-const useMoviesStore = create((set, get) => ({
-  movies: [],
-  favorites: [],
-  
-  toggleFavorite: (movieId) => {
-    set((state) => ({
-      favorites: state.favorites.includes(movieId)
-        ? state.favorites.filter(id => id !== movieId)
-        : [...state.favorites, movieId]
-    }));
-  },
-  
-  isFavorite: (movieId) => {
-    return get().favorites.includes(movieId);
-  },
-}));
-
-// Utilisation dans un composant
-const { toggleFavorite, favorites } = useMoviesStore();
-```
-
-#### 📊 Métriques
-
-- **Lignes de code** : ~70 lignes (useMoviesStore.js)
-- **Bundle size** : ~1 KB (gzipped)
-- **Complexité** : ⭐⭐ (2/5)
-- **Performance** : ⭐⭐⭐⭐⭐ (5/5)
-
----
-
-## 📊 Tableau Comparatif Détaillé
-
-| Critère | Context API | Redux Toolkit | Zustand |
-|---------|-------------|---------------|---------|
-| **Bundle Size** | 0 KB | ~15 KB | ~1 KB |
-| **Courbe d'apprentissage** | Facile | Difficile | Très facile |
-| **Boilerplate** | Moyen | Élevé | Faible |
-| **Performance** | Bonne | Excellente | Excellente |
-| **DevTools** | Basique | Excellent | Bon |
-| **TypeScript** | Bon | Excellent | Excellent |
-| **Middleware** | Non | Oui | Oui |
-| **Scalabilité** | Faible | Excellente | Bonne |
-| **Communauté** | Très large | Très large | Croissante |
-| **Cas d'usage idéal** | Petits projets | Grandes apps | Projets moyens |
-
----
-
-## 🎨 Captures d'Écran
-
-### Démo de l'Application
-![Démo de l'application](./demo/film.gif)
-
----
-
-## 🎬 API TMDb
-
-### Configuration
-
-L'application utilise l'API The Movie Database (TMDb) pour récupérer les données des films.
-
-- **Base URL** : `https://api.themoviedb.org/3`
-- **Clé API** : Stockée dans `.env`
-- **Documentation** : [TMDb API Docs](https://developers.themoviedb.org/3)
-
-### Endpoints Utilisés
+### 1. Todo App - Approche Reducer
 
 ```javascript
-// Films populaires
-GET /movie/popular?api_key={API_KEY}&language=en-US&page=1
+// 1. Définir l'état initial
+const initialState = {
+  todos: [],
+  filter: 'all'
+};
 
-// Recherche de films
-GET /search/movie?api_key={API_KEY}&query={QUERY}
+// 2. Créer le reducer
+function todoReducer(state, action) {
+  switch(action.type) {
+    case 'ADD_TODO':
+      return {
+        ...state,
+        todos: [...state.todos, {
+          id: Date.now(),
+          text: action.payload,
+          completed: false
+        }]
+      };
+    case 'TOGGLE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map(todo =>
+          todo.id === action.payload
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        )
+      };
+    default:
+      return state;
+  }
+}
 
-// Images
-https://image.tmdb.org/t/p/w342/{poster_path}
+// 3. Utiliser dans le composant
+const [state, dispatch] = useReducer(todoReducer, initialState);
 ```
-
-### Genres Disponibles
-
-- Action (28)
-- Adventure (12)
-- Animation (16)
-- Comedy (35)
-- Crime (80)
-- Documentary (99)
-- Drama (18)
-- Family (10751)
-- Fantasy (14)
-- Horror (27)
-- Romance (10749)
-- Science Fiction (878)
-- Thriller (53)
-- Et plus...
 
 ---
 
-## 🚀 Fonctionnalités Avancées
+### 2. Shopping List - Approche Effect
 
-### Debouncing de la Recherche
+```javascript
+// Gestion du timer Pomodoro
+const [minutes, setMinutes] = useState(25);
+const [seconds, setSeconds] = useState(0);
+const [isActive, setIsActive] = useState(false);
 
-La recherche utilise un debouncing de 500ms pour éviter trop d'appels API :
+useEffect(() => {
+  let interval;
+  
+  if (isActive) {
+    interval = setInterval(() => {
+      if (seconds === 0) {
+        if (minutes === 0) {
+          setIsActive(false);
+          alert('Session terminée !');
+        } else {
+          setMinutes(m => m - 1);
+          setSeconds(59);
+        }
+      } else {
+        setSeconds(s => s - 1);
+      }
+    }, 1000);
+  }
+  
+  // Cleanup crucial
+  return () => clearInterval(interval);
+}, [isActive, minutes, seconds]);
+```
+
+---
+
+### 3. Blog App - Approche State
+
+```javascript
+// Lazy initialization
+const [articles, setArticles] = useState(() => {
+  const saved = localStorage.getItem('articles');
+  return saved ? JSON.parse(saved) : [];
+});
+
+// Synchronisation automatique
+useEffect(() => {
+  localStorage.setItem('articles', JSON.stringify(articles));
+}, [articles]);
+
+// Update immutable
+const handleLike = (id) => {
+  setArticles(articles.map(article =>
+    article.id === id
+      ? { ...article, likes: article.likes + 1 }
+      : article
+  ));
+};
+```
+
+---
+
+## 🧠 Concepts React abordés
+
+### 1. Immutabilité
+
+**Principe** : Ne jamais modifier l'état directement
+
+```javascript
+// ❌ MAUVAIS
+state.todos.push(newTodo);
+setState(state);
+
+// ✅ BON
+setState({
+  ...state,
+  todos: [...state.todos, newTodo]
+});
+```
+
+### 2. Dépendances useEffect
+
+**Principe** : Déclarer toutes les dépendances utilisées
+
+```javascript
+// ⚠️ Risque de stale closure
+useEffect(() => {
+  console.log(count); // count peut être obsolète
+}, []); // Dépendances manquantes
+
+// ✅ Correct
+useEffect(() => {
+  console.log(count);
+}, [count]); // Dépendance déclarée
+```
+
+### 3. Cleanup des effets
+
+**Principe** : Toujours nettoyer les ressources
 
 ```javascript
 useEffect(() => {
-  const timer = setTimeout(() => {
-    if (searchQuery) {
-      searchMovies(searchQuery);
-    } else {
-      loadMovies();
-    }
-  }, 500);
+  const interval = setInterval(() => {
+    // logique
+  }, 1000);
   
-  return () => clearTimeout(timer);
-}, [searchQuery]);
+  // Cleanup obligatoire
+  return () => clearInterval(interval);
+}, []);
 ```
 
-### Lazy Loading des Images
+### 4. Lazy Initialization
 
-Les images utilisent l'attribut `loading="lazy"` pour améliorer les performances :
+**Principe** : Initialiser l'état de manière paresseuse
 
-```jsx
-<img 
-  src={getPosterUrl(movie.poster_path)} 
-  alt={movie.title}
-  loading="lazy"
-/>
+```javascript
+// ❌ Calculé à chaque render
+const [data] = useState(expensiveComputation());
+
+// ✅ Calculé une seule fois
+const [data] = useState(() => expensiveComputation());
 ```
 
-### Gestion des États
+---
 
-- **Loading** : Spinner animé pendant le chargement
-- **Error** : Message d'erreur stylisé
-- **Empty** : Message quand aucun film n'est trouvé
+## 🎯 Quand utiliser quel hook ?
+
+### Guide de décision
+
+```
+Ai-je besoin de gérer un état ?
+│
+├─ NON → Pas de hook nécessaire
+│
+└─ OUI → Continue
+    │
+    ├─ État simple (string, number, boolean) ?
+    │   └─ OUI → useState
+    │
+    ├─ Plusieurs actions sur l'état ?
+    │   └─ OUI → useReducer
+    │
+    └─ Synchronisation externe ?
+        └─ OUI → useEffect
+```
+
+### Cas d'usage détaillés
+
+| Scenario | Hook recommandé | Exemple |
+|----------|----------------|---------|
+| Toggle button | useState | `const [isOpen, setIsOpen] = useState(false)` |
+| Form input | useState | `const [email, setEmail] = useState('')` |
+| Todo list | useReducer | Actions: ADD, DELETE, TOGGLE |
+| Fetch API | useEffect + useState | `useEffect(() => fetchData(), [])` |
+| Timer | useEffect | Interval avec cleanup |
+| localStorage | useEffect | Sync state ↔ storage |
+| Complex form | useReducer | Validation, reset, submit |
 
 ---
 
-## 🎓 Apprentissages Clés
+## 📊 Comparaison synthétique
 
-### Context API
-- Idéal pour les états simples et localisés
-- Attention aux re-renders inutiles
-- Utiliser `useMemo` et `useCallback` pour optimiser
+### Tableau récapitulatif
 
-### Redux Toolkit
-- Excellente structure pour les grandes applications
-- Les slices simplifient beaucoup le code Redux
-- Les DevTools sont indispensables pour le debugging
+| Critère | useState | useReducer | useEffect |
+|---------|----------|------------|-----------|
+| **Simplicité** | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐ |
+| **Scalabilité** | ⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ |
+| **Testabilité** | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Performance** | ⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ |
+| **Learning curve** | Facile | Moyen | Moyen |
+| **Use cases** | Nombreux | Spécifiques | Nombreux |
 
-### Zustand
-- Le meilleur compromis simplicité/performance
-- Parfait pour les projets de taille moyenne
-- Très facile à migrer depuis Context API
+### Verdict final
 
----
+- **Pour débuter** → useState
+- **Pour structurer** → useReducer  
+- **Pour synchroniser** → useEffect
 
-## 📝 Recommandations
-
-### Quand utiliser Context API ?
-- Projets simples avec peu d'état global
-- Prototypes rapides
-- Applications avec peu de composants
-
-### Quand utiliser Redux Toolkit ?
-- Applications complexes avec beaucoup d'état
-- Besoin de middleware (logging, analytics)
-- Équipes importantes nécessitant une structure stricte
-- Applications nécessitant du time-travel debugging
-
-### Quand utiliser Zustand ?
-- Projets de taille moyenne
-- Besoin de simplicité avec de bonnes performances
-- Migration depuis Context API
-- Applications modernes avec TypeScript
+**Tous les trois sont complémentaires et doivent être maîtrisés !**
 
 ---
 
-## 👨‍💻 Auteur
+## 📚 Ressources et documentation
 
-**Projet Comparatif - React State Management**
+### Documentation officielle
 
-Réalisé dans le cadre du cours MERN Stack
+- 📘 [React Hooks](https://react.dev/reference/react) - Documentation complète
+- 📗 [useState](https://react.dev/reference/react/useState) - API Reference
+- 📕 [useReducer](https://react.dev/reference/react/useReducer) - API Reference
+- 📙 [useEffect](https://react.dev/reference/react/useEffect) - API Reference
+
+### Articles recommandés
+
+- [When to use useReducer vs useState](https://react.dev/learn/extracting-state-logic-into-a-reducer)
+- [Synchronizing with Effects](https://react.dev/learn/synchronizing-with-effects)
+- [You Might Not Need an Effect](https://react.dev/learn/you-might-not-need-an-effect)
+
+### Cours associé
+
+📄 **Cours MERN - Semaine 7** : useState, useEffect & useReducer
+
+---
+
+## 🤝 Contribution
+
+Les contributions sont encouragées ! Voici comment participer :
+
+1. 🍴 Fork le projet
+2. 🌿 Créez votre branche (`git checkout -b feature/NewFeature`)
+3. ✍️ Commit vos changements (`git commit -m 'Add NewFeature'`)
+4. 📤 Push vers la branche (`git push origin feature/NewFeature`)
+5. 🔀 Ouvrez une Pull Request
 
 ---
 
-## 📄 Licence
+## 👩‍💻 Auteur
 
-Ce projet est à des fins éducatives uniquement.
+**Imen BEN OTHMEN BANANI**
 
----
-## 📚 Ressources Supplémentaires
-
-### Documentation Officielle
-- [React Context](https://react.dev/reference/react/createContext)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [Zustand](https://github.com/pmndrs/zustand)
-- [TMDb API](https://developers.themoviedb.org/3)
-
-### Tutoriels
-- [React State Management Guide](https://react.dev/learn/managing-state)
-- [Redux Toolkit Tutorial](https://redux-toolkit.js.org/tutorials/quick-start)
-- [Zustand Getting Started](https://docs.pmnd.rs/zustand/getting-started/introduction)
+- 🎓 Étudiante en 4ème année Data Science
+- 💻 Spécialisation : MERN Stack Development
+- 📧 Email : [votre-email@exemple.com]
+- 🔗 LinkedIn : [votre-profil]
 
 ---
+
+## 📝 Licence
+
+Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
+
+---
+
+<div align="center">
+
+### ⭐ Si ce projet vous aide, donnez-lui une étoile ! ⭐
+
+**Made with ❤️ and ⚛️ React**
+
+*"Master the hooks, master React."*
+
+</div>
