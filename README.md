@@ -588,11 +588,6 @@ Les contributions sont encouragées ! Voici comment participer :
 - 💻 Spécialisation : MERN Stack Development
 - 📧 Email : imenbenothmenbanani@gmail.com
 - 🔗 LinkedIn : imenbenothmenbanani
----
-
-## 📝 Licence
-
-Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
@@ -600,8 +595,7 @@ Ce projet est sous licence MIT. Consultez le fichier [LICENSE](LICENSE) pour plu
 
 ### ⭐ Si ce projet vous aide, donnez-lui une étoile ! ⭐
 
-**Made with ❤️ and ⚛️ React**
 
-*"Master the hooks, master React."*
+
 
 </div>
